@@ -3,19 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Student technical registraions Form</title>
+<title>Student sports Registrations Form</title>
 
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-  <style>
+<style>
   body {
     font-family: 'Merriweather', serif; 
     background-size: cover;
     background-position: center;
     color: #333; 
   }
-
-
   body {
     background-image: url('https://images.blocksurvey.io/cdn-cgi/imagedelivery/G6cPOuGZ4Z_bEV13gBxixw/templates/concert-registration-form.svg/l');
     background-size: cover;
@@ -51,12 +49,13 @@
     border-color: #0056b3; 
   }
 
-.error {
-  color: red;
-}
-.success {
-  color: green;
-}
+  .error {
+    color: red;
+  }
+
+  .success {
+    color: green;
+  }
 </style>
 </head>
 <body>
@@ -97,10 +96,10 @@
       <label for="event">Event:</label>
       <select class="form-control" id="event" name="event" required>
         <option value="">Select</option>
-        <option value="cricket">cricket </option>
-        <option value="basketball Competition">basketball Competition</option>
-        <option value="football Challenge">football Challenge</option>
-        <option value="table tennis">table tennis</option>
+        <option value="cricket">Cricket</option>
+        <option value="basketball Competition">Basketball Competition</option>
+        <option value="football Challenge">Football Challenge</option>
+        <option value="table tennis">Table Tennis</option>
       </select>
       <small id="eventError" class="form-text error" style="display: none;">Please select an event.</small>
     </div>
@@ -117,78 +116,86 @@
     </div>
     <button type="submit" class="btn btn-primary">Register</button>
   </form>
-
+  <div id="successMessage" style="display: none;" class="mt-3 alert alert-success">
+    Form submitted successfully! Click <button id="confirmRedirectBtn" class="btn btn-primary" onclick="redirectToPostreg()">OK</button>
+  </div>
 </div>
 
-<div id="successMessage" style="display: none;" class="mt-3 alert alert-success">Form submitted successfully!</div>
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 <script>
-document.getElementById('eventRegistrationForm').addEventListener('submit', function(event) {
-  event.preventDefault(); 
-  var name = document.getElementById('name').value.trim();
-  var email = document.getElementById('email').value.trim();
-  var phone = document.getElementById('phone').value.trim();
-  var dob = document.getElementById('dob').value.trim();
-  var collegeName = document.getElementById('college_name').value.trim();
-  var branch = document.getElementById('branch').value.trim();
-  var event = document.getElementById('event').value;
-  var paymentMethod = document.getElementById('payment_method').value;
-  
-  var errorMsgs = document.querySelectorAll('.error');
-  errorMsgs.forEach(function(element) {
-    element.style.display = 'none';
-  });
-  
-  var isValid = true;
-  if (name.length < 3) {
-    document.getElementById('nameError').style.display = 'block';
-    isValid = false;
-  }
-  if (!email.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)) {
-    document.getElementById('emailError').style.display = 'block';
-    isValid = false;
-  }
-  if (!phone.match(/^\d{10}$/)) {
-    document.getElementById('phoneError').style.display = 'block';
-    isValid = false;
-  }
-  if (!dob) {
-    document.getElementById('dobError').style.display = 'block';
-    isValid = false;
-  }
-  if (!collegeName) {
-    document.getElementById('collegeNameError').style.display = 'block';
-    isValid = false;
-  }
-  if (!branch) {
-    document.getElementById('branchError').style.display = 'block';
-    isValid = false;
-  }
-  if (!event) {
-    document.getElementById('eventError').style.display = 'block';
-    isValid = false;
-  }
-  if (!paymentMethod) {
-    document.getElementById('paymentMethodError').style.display = 'block';
-    isValid = false;
-  }
-  
-  if (isValid) {
-    console.log("Event Registration Form Data:");
-    console.log("Name:", name);
-    console.log("Email:", email);
-    console.log("Phone:", phone);
-    console.log("Date of Birth:", dob);
-    console.log("College Name:", collegeName);
-    console.log("Branch:", branch);
-    console.log("Event:", event);
-    console.log("Payment Method:", paymentMethod);
+  document.getElementById('eventRegistrationForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var name = document.getElementById('name').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var phone = document.getElementById('phone').value.trim();
+    var dob = document.getElementById('dob').value.trim();
+    var collegeName = document.getElementById('college_name').value.trim();
+    var branch = document.getElementById('branch').value.trim();
+    var event = document.getElementById('event').value;
+    var paymentMethod = document.getElementById('payment_method').value;
     
-    document.getElementById('eventRegistrationForm').reset();
-    document.getElementById('successMessage').style.display = 'block';
-  }
+    var errorMsgs = document.querySelectorAll('.error');
+    errorMsgs.forEach(function(element) {
+      element.style.display = 'none';
+    });
+    
+    var isValid = true;
+    if (name.length < 3) {
+      document.getElementById('nameError').style.display = 'block';
+      isValid = false;
+    }
+    if (!email.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)) {
+      document.getElementById('emailError').style.display = 'block';
+      isValid = false;
+    }
+    if (!phone.match(/^\d{10}$/)) {
+      document.getElementById('phoneError').style.display = 'block';
+      isValid = false;
+    }
+    if (!dob) {
+      document.getElementById('dobError').style.display = 'block';
+      isValid = false;
+    }
+    if (!collegeName) {
+      document.getElementById('collegeNameError').style.display = 'block';
+      isValid = false;
+    }
+    if (!branch) {
+      document.getElementById('branchError').style.display = 'block';
+      isValid = false;
+    }
+    if (!event) {
+      document.getElementById('eventError').style.display = 'block';
+      isValid = false;
+    }
+    if (!paymentMethod) {
+      document.getElementById('paymentMethodError').style.display = 'block';
+      isValid = false;
+    }
+    
+    if (isValid) {
+      document.getElementById('eventRegistrationForm').reset();
+      document.getElementById('successMessage').style.display = 'block';
+      
+      document.getElementById('confirmRedirectBtn').addEventListener('click', function() {
+        window.location.href = "postreg.html";
+      });
+    }
+  });
+  function redirectToPostreg() {
+  window.location.href = "postreg.html";
+}
+const form = document.getElementById('myForm');
+
+form.addEventListener('submit', function(event) {
+
+  event.preventDefault();
+
+  const successMessage = document.getElementById('successMessage');
+  successMessage.style.display = 'block'; 
 });
 </script>
+  
 </body>
 </html>
