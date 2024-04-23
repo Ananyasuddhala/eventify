@@ -117,7 +117,9 @@
     </div>
     <button type="submit" class="btn btn-primary">Register</button>
   </form>
-
+  <div id="successMessage" style="display: none;" class="mt-3 alert alert-success">
+    Form submitted successfully! Click <button id="confirmRedirectBtn" class="btn btn-primary" onclick="redirectToPostreg()">OK</button>
+  </div>
 </div>
 
 <div id="successMessage" style="display: none;" class="mt-3 alert alert-success">Form submitted successfully!</div>
@@ -188,6 +190,18 @@ document.getElementById('eventRegistrationForm').addEventListener('submit', func
     document.getElementById('eventRegistrationForm').reset();
     document.getElementById('successMessage').style.display = 'block';
   }
+});
+function redirectToPostreg() {
+  window.location.href = "postreg.html";
+}
+const form = document.getElementById('myForm');
+
+form.addEventListener('submit', function(event) {
+
+  event.preventDefault();
+
+  const successMessage = document.getElementById('successMessage');
+  successMessage.style.display = 'block'; 
 });
 </script>
 </body>
