@@ -55,35 +55,89 @@
             background-color: #435ac8;
             border-color: #435ac8;
         }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
     <div id='main'>
         <div id="form-div">
             <h1>Sign Up</h1>
-            <form id="signup-form">
+            <form id="signup-form" onsubmit="return validateForm()">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Full Name">
+                    <input type="text" class="form-control" placeholder="Full Name" id="fullName">
+                    <span class="error-message" id="fullNameError"></span>
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Email Address">
+                    <input type="email" class="form-control" placeholder="Email Address" id="email">
+                    <span class="error-message" id="emailError"></span>
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password">
+                    <input type="password" class="form-control" placeholder="Password" id="password">
+                    <span class="error-message" id="passwordError"></span>
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Confirm Password">
+                    <input type="password" class="form-control" placeholder="Confirm Password" id="confirmPassword">
+                    <span class="error-message" id="confirmPasswordError"></span>
                 </div>
                 <div class="form-group">
-                    <a href="loginp.html" class="btn btn-outline-dark" role="button">Sign Up</a>
+                    <button type="submit" class="btn btn-outline-dark">Sign Up</button>
                 </div>
-            
+            </form>
+        </div>
     </div>
 
-     <script>
-        document.getElementById("loginp-link").addEventListener("click", function() {
-            window.location.href = "loginp.html";
-          });
+    <script>
+        function validateForm() {
+            var fullName = document.getElementById("fullName").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+
+            // Reset error messages
+            document.getElementById("fullNameError").innerHTML = "";
+            document.getElementById("emailError").innerHTML = "";
+            document.getElementById("passwordError").innerHTML = "";
+            document.getElementById("confirmPasswordError").innerHTML = "";
+
+            var isValid = true;
+
+            if (fullName === "") {
+                document.getElementById("fullNameError").innerHTML = "Please enter your full name.";
+                isValid = false;
+            }
+
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById("emailError").innerHTML = "Please enter a valid email address.";
+                isValid = false;
+            }
+
+        
+            if (password === "") {
+                document.getElementById("passwordError").innerHTML = "Please enter a password.";
+                isValid = false;
+            }
+
+            
+            if (confirmPassword === "") {
+                document.getElementById("confirmPasswordError").innerHTML = "Please confirm your password.";
+                isValid = false;
+            } else if (password !== confirmPassword) {
+                document.getElementById("confirmPasswordError").innerHTML = "Passwords do not match.";
+                isValid = false;
+            }
+
+            if (isValid) {
+                
+                window.location.href = "2ndpage.html";
+            }
+
+            return isValid;
+        }
     </script>
 </body>
 </html>
