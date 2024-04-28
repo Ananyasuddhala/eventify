@@ -4,139 +4,169 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-   
     <style>
         body {
-            background-image: url('https://i.pinimg.com/236x/be/56/ef/be56efe04f28547ac2baf872fe76739d.jpg');
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             background-size: cover;
             background-repeat: no-repeat;
             margin: 0;
+            background-image: url('https://i.pinimg.com/236x/c4/b7/1d/c4b71d8c3f622a80656996ddcef82a32.jpg');
         }
 
         #main {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            width: 80%; /* Adjust as needed */
+            background-color: transparent;
+            padding: 20px; /* Add padding for spacing */
+        }
+
+        #side {
+            width: 50%;
+            padding-right: 20px; 
         }
 
         #form-div {
-            background-color: rgba(255, 127, 255, 0.464);
-            padding: 30px;
-            border-radius: 10px;
-            width: 400px;
+            background-color: rgba(64, 153, 198, 0.8);
+            padding: 50px;
+            width: 50%;
         }
 
         h1 {
             text-align: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
             color: rgba(4, 9, 9, 0.904);
-            font-size: 36px;
-            margin-bottom: 30px;
+            letter-spacing: 1px;
+            font-size: 40px; 
         }
 
-        .form-group {
-            margin-bottom: 20px;
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+            cursor: pointer;
         }
 
-        .form-group input {
-            border-radius: 5px;
+        .login-box {
+            background-color: #198ca882;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
         }
 
         .btn-custom {
-            background-color: #4e63d7;
-            border-color: #4e63d7;
+            background-color: #007bff;
             color: #fff;
-            border-radius: 5px;
         }
 
         .btn-custom:hover {
-            background-color: #435ac8;
-            border-color: #435ac8;
+            background-color: #0056b3;
         }
 
-        .error-message {
-            color: red;
-            font-size: 14px;
+        .socials a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #007bff;
+            color: #fff;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 50%;
+            margin: 0 5px;
         }
     </style>
 </head>
 <body>
-    <div id='main'>
-        <div id="form-div">
-            <h1>Sign Up</h1>
-            <form id="signup-form" onsubmit="return validateForm()">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Full Name" id="fullName">
-                    <span class="error-message" id="fullNameError"></span>
+<div id='main'>
+    <div id="side">
+        <div id="demo" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://i.pinimg.com/236x/72/fd/af/72fdafa632f90f3cc05748149a1602a6.jpg" alt="First slide" onclick="changeBackground('https://images.unsplash.com/photo-1524062944377-ac5c50a3e5ce')">
                 </div>
-                <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Email Address" id="email">
-                    <span class="error-message" id="emailError"></span>
+                <div class="carousel-item">
+                    <img src="https://i.pinimg.com/236x/e9/74/97/e97497efc0dae67f6904df32db2fa7c7.jpg" alt="Second slide" onclick="changeBackground('https://images.unsplash.com/photo-1501167786227-4cba60f6d58e')">
                 </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" id="password">
-                    <span class="error-message" id="passwordError"></span>
+                <div class="carousel-item">
+                    <img src="https://i.pinimg.com/236x/74/86/4f/74864f2b975839da4fa3bafdfa46e257.jpg" alt="Third slide" onclick="changeBackground('https://images.unsplash.com/photo-1513360371665-6e22a81ee879')">
                 </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Confirm Password" id="confirmPassword">
-                    <span class="error-message" id="confirmPasswordError"></span>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-outline-dark">Sign Up</button>
-                </div>
-            </form>
+            </div>
+            <a class="carousel-control-prev" href="#demo" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#demo" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </a>
         </div>
     </div>
-
+    <div class="container">
+        <div class="row">
+            <div class="col-md-11 mt-60 mx-md-auto">
+                <div class="login-box shadow rounded p-4">
+                    <h2 class="text-center mb-4">Welcome Back</h2>
+                    <form class="form" id="loginForm" method="post" action="#">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" class="form-control" placeholder="Enter your email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <div class="input-group">
+                                <input type="password" id="password" class="form-control" placeholder="Enter your password">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="togglePasswordVisibility">
+                                        <span class="zmdi zmdi-eye-off"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">Remember Me</label>
+                            </div>
+                            <button type="button" class="btn btn-outline-dark" id="signInButton">Sign in</button>
+                        </div>
+                    </form>
+                    <div class="text-center mt-4">
+                        <h5 class="mb-3">New User?</h5>
+                        <a href="sign-up.html" class="btn btn-outline-dark" role="button">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script>
-        function validateForm() {
-            var fullName = document.getElementById("fullName").value;
-            var email = document.getElementById("email").value;
-            var password = document.getElementById("password").value;
-            var confirmPassword = document.getElementById("confirmPassword").value;
-
-            // Reset error messages
-            document.getElementById("fullNameError").innerHTML = "";
-            document.getElementById("emailError").innerHTML = "";
-            document.getElementById("passwordError").innerHTML = "";
-            document.getElementById("confirmPasswordError").innerHTML = "";
-
-            var isValid = true;
-
-            if (fullName === "") {
-                document.getElementById("fullNameError").innerHTML = "Please enter your full name.";
-                isValid = false;
-            }
-
-            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                document.getElementById("emailError").innerHTML = "Please enter a valid email address.";
-                isValid = false;
-            }
-
-        
-            if (password === "") {
-                document.getElementById("passwordError").innerHTML = "Please enter a password.";
-                isValid = false;
-            }
-
-            
-            if (confirmPassword === "") {
-                document.getElementById("confirmPasswordError").innerHTML = "Please confirm your password.";
-                isValid = false;
-            } else if (password !== confirmPassword) {
-                document.getElementById("confirmPasswordError").innerHTML = "Passwords do not match.";
-                isValid = false;
-            }
-
-            if (isValid) {
-                window.location.href = "2ndpage.html";
-            }
-
-            return isValid;
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const signInButton = document.getElementById('signInButton');
+            signInButton.addEventListener('click', function() {
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+    
+                if (email.trim() === '' || password.trim() === '') {
+                    alert('Please enter both email and password.');
+                    return;
+                }
+    
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    alert('Please enter a valid email address.');
+                    return;
+                }
+    
+                window.location.href = '2ndpage.html';
+            });
+        });
     </script>
 </body>
 </html>
